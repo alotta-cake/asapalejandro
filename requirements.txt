@@ -1,5 +1,0 @@
-mkdocs
-mkdocs-material
-mkdocs-minify-plugin
-mkdocs-git-revision-date-localized-plugin
-mkdocs-material[imaging] 
