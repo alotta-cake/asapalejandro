@@ -2,14 +2,13 @@
 
 <div class="hero-section" markdown>
 
-# Welcome to My Digital Hub 🚀
+# Welcome to Innovation 🚀
 
-**Technology Leader | Content Creator | IBM Professional**
+### Rapidly co-create with an IBM Client Engineering leader
 
-Building the future through innovation, education, and authentic storytelling.
+**From idea ➜ pilot ➜ production with automation & AI.**
 
-[Get in Touch](resources/contact.md){ .md-button .md-button--primary }
-[View My Work](about.md){ .md-button }
+[Start a Pilot](resources/contact.md){ .md-button .md-button--primary style="background-color: #3949ab; color: #fff;" } [See My Work](about.md){ .md-button }
 
 </div>
 
@@ -17,96 +16,51 @@ Building the future through innovation, education, and authentic storytelling.
 
 ## Featured Content
 
-### Latest Videos
-<div class="grid cards" markdown>
+- :fontawesome-solid-video: **Latest YouTube**  
+  Actionable tech, AI, and leadership insights—fast.
+  [:octicons-arrow-right-24: Watch Now](https://youtube.com/@alejandropalumbo){ .md-button }
 
--   :fontawesome-solid-video: __[Latest YouTube Video]()__
-    
-    Watch my most recent content on technology, leadership, and innovation.
-    
-    [:octicons-arrow-right-24: Watch Now]()
+- :fontawesome-solid-microphone: **Podcast**  
+  Real stories on innovation and digital transformation.
+  [:octicons-arrow-right-24: Listen](podcasts/index.md){ .md-button }
 
--   :fontawesome-solid-microphone: __[Podcast Episodes]()__
-    
-    Listen to conversations about tech trends, career development, and industry insights.
-    
-    [:octicons-arrow-right-24: Listen Now]()
-
--   :fontawesome-solid-calendar: __[Upcoming Events]()__
-    
-    Join me at IBM events, conferences, and speaking engagements.
-    
-    [:octicons-arrow-right-24: See Events]()
-
-</div>
+- :fontawesome-solid-calendar: **Upcoming Events**  
+  Join live sessions and IBM client workshops.
+  [:octicons-arrow-right-24: See Events](events/upcoming.md){ .md-button }
 
 ---
 
 ## What I Do
 
-<div class="grid" markdown>
+- :fontawesome-solid-rocket: **Client Engineering**  
+  Accelerate business outcomes with rapid prototyping and automation.
 
-### :fontawesome-solid-rocket: **Technology Leadership**
-Leading innovative projects and teams at IBM, driving digital transformation and cutting-edge solutions.
+- :fontawesome-solid-video: **Content Creation**  
+  Demystifying tech and AI for business leaders and teams.
 
-### :fontawesome-solid-video: **Content Creation**
-Sharing insights on YouTube, TikTok, and other platforms about technology, leadership, and career growth.
+- :fontawesome-solid-microphone: **Speaking & Events**  
+  Keynotes and workshops that inspire action and results.
 
-### :fontawesome-solid-microphone: **Speaking & Events**
-Presenting at IBM events, conferences, and industry gatherings to inspire and educate.
-
-### :fontawesome-solid-users: **Community Building**
-Connecting with professionals worldwide through social media and networking events.
-
-</div>
+- :fontawesome-solid-users: **Community Building**  
+  Connecting innovators to drive real-world impact.
 
 ---
 
 ## Latest Updates
 
-<div class="grid" markdown>
-
-### Recent Blog Posts
-- [Building Effective Teams in the Digital Age](blog/building-effective-teams.md)
-- [The Future of AI in Enterprise](blog/future-of-ai-enterprise.md)
-- [My Journey at IBM](blog/ibm-journey.md)
-
-### Upcoming Events
-- **IBM TechXchange Conference** - October 2024
-- **AI & Machine Learning Summit** - November 2024
-- **Leadership Workshop Series** - Monthly
-
-### Social Media Highlights
-- 🎥 **YouTube**: Weekly tech tutorials and insights
-- 💼 **LinkedIn**: Professional networking and thought leadership
-- 📱 **TikTok**: Quick tech tips and behind-the-scenes content
-- 📸 **Instagram**: Personal brand and lifestyle content
-- 🐦 **X (Twitter)**: Real-time industry commentary
-
-</div>
+- **Blog:** [Building Effective Teams](blog/building-effective-teams.md) — Teamwork for digital success.
+- **Event:** IBM TechXchange, Oct 2024 — See you there!
+- **Social:**
+  - :fontawesome-brands-youtube: [YouTube](https://youtube.com/@alejandropalumbo)
+  - :fontawesome-brands-linkedin: [LinkedIn](https://linkedin.com/in/alejandropalumbo)
+  - :fontawesome-brands-tiktok: [TikTok](https://tiktok.com/@alejandropalumbo)
+  - :fontawesome-brands-instagram: [Instagram](https://instagram.com/alejandropalumbo)
+  - :fontawesome-brands-x-twitter: [X (Twitter)](https://x.com/alejandropalumbo)
 
 ---
 
-## Connect With Me
+## Connect
 
-<div class="social-links" markdown>
+Ready to move from idea to impact? Let’s build something extraordinary together.
 
-[:fontawesome-brands-youtube: YouTube](https://youtube.com/@alejandropalumbo){ .md-button .md-button--primary }
-[:fontawesome-brands-linkedin: LinkedIn](https://linkedin.com/in/alejandropalumbo){ .md-button .md-button--primary }
-[:fontawesome-brands-tiktok: TikTok](https://tiktok.com/@alejandropalumbo){ .md-button .md-button--primary }
-[:fontawesome-brands-instagram: Instagram](https://instagram.com/alejandropalumbo){ .md-button .md-button--primary }
-[:fontawesome-brands-x-twitter: X (Twitter)](https://x.com/alejandropalumbo){ .md-button .md-button--primary }
-
-</div>
-
----
-
-## Let's Work Together
-
-Whether you're looking for speaking opportunities, collaboration, or just want to connect, I'd love to hear from you.
-
-[Contact Me](resources/contact.md){ .md-button .md-button--primary }
-
----
-
-*"Innovation happens at the intersection of technology and human potential."* 
+[Start a Pilot](resources/contact.md){ .md-button .md-button--primary style="background-color: #3949ab; color: #fff;" } [See My Work](about.md){ .md-button } 
