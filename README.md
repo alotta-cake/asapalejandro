@@ -1,10 +1,58 @@
-# asapalejandro.com &nbsp;— Next.js 14 starter
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-social:
-  - icon: fontawesome/brands/youtube   link: https://youtube.com/@IBMAlejandro
-  - icon: fontawesome/brands/linkedin  link: https://www.linkedin.com/in/alejandro-palumbo/
-  - icon: fontawesome/brands/tiktok    link: https://tiktok.com/@asapalejandro
-  - icon: fontawesome/brands/instagram link: https://instagram.com/asapalejandro
-  - icon: fontawesome/brands/x-twitter link: https://x.com/925alejandro
+## Getting Started
 
-This repo starts **completely clean**. Next steps: write blog posts documenting domain purchase & future IBM Cloud Code Engine deployment. 
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+Great! To use this image as your avatar on the homepage, follow these steps:
+
+### 1. Save the Image
+- Download or save the image you just uploaded to your computer.
+
+### 2. Add to Your Project
+- Place the image file in your project at:  
+  ```
+  /public/avatar.png
+  ```
+  (Rename the file to `avatar.png` if it isn’t already.)
+
+### 3. That’s it!
+- Your homepage will now display this image in the About Me section as your portrait.
+
+---
+
+**Tip:**  
+If you want to crop or resize the image to a square for best appearance, you can do so before saving it as `avatar.png`. The Tailwind classes in your code will automatically make it round and fit the layout.
+
+Let me know if you want help with image cropping, further styling, or anything else!
