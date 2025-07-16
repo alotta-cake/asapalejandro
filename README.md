@@ -1,58 +1,192 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Alejandro Palumbo - IBM Client Engineering Website
 
-## Getting Started
+A modern, enterprise-grade website showcasing IBM Client Engineering services and Alejandro Palumbo's expertise in AI & Automation. Built with Next.js 14, TypeScript, and Tailwind CSS, featuring AI-powered development tools and IBM Cloud deployment.
 
-First, run the development server:
+## 🚀 Live Site
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+**Website**: [asapalejandro.com](https://asapalejandro.com)  
+**Deployed on**: IBM Cloud Code Engine
+
+## ✨ Features
+
+### 🏠 **Homepage**
+- Professional hero section with IBM Client Engineering messaging
+- Personal introduction with IBM journey highlights
+- Fun facts and personal background
+- Social media integration (YouTube, LinkedIn, TikTok, Instagram, Twitter)
+
+### 🧭 **Navigation**
+- IBM-style header with dropdown navigation
+- Product categories: Application Development, Application Integration, Infrastructure Automation, Network Management, Identity & Access Management, IT Automation & FinOps, Asset Lifecycle Management
+- Home dropdown with: About, Events, Workshops, Pilots, My Work, Blogs
+- Responsive design for desktop and mobile
+- Search functionality (coming soon)
+
+### 📄 **Pages & Sections**
+- **About**: Detailed professional background and IBM journey
+- **Events**: Upcoming speaking engagements and conferences
+- **Workshops**: Available training sessions and technical workshops
+- **Pilots**: Request pilot services with process overview
+- **My Work**: Portfolio of projects and content
+- **Blogs**: Technical articles and thought leadership content
+
+### 📝 **Blog System**
+- Featured blog post: "From Idea to URL in a Day"
+- Sample posts for future content
+- Newsletter signup functionality
+- Professional typography and layout
+- Category organization
+
+### 🛠 **Technical Stack**
+- **Framework**: Next.js 14 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Icons**: Font Awesome
+- **Deployment**: IBM Cloud Code Engine
+- **Development**: Cursor AI + IBM Watsonx
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+ 
+- npm, yarn, or pnpm
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd AutomationAlejandro
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. **Run the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 🏗️ Project Structure
+
+```
+src/
+├── app/
+│   ├── about/page.tsx          # About page
+│   ├── events/page.tsx         # Events page
+│   ├── workshops/page.tsx      # Workshops page
+│   ├── pilots/page.tsx         # Pilots page
+│   ├── my-work/page.tsx        # My Work page
+│   ├── blogs/
+│   │   ├── page.tsx            # Blog listing
+│   │   └── building-enterprise-website-cursor-watsonx/
+│   │       └── page.tsx        # Featured blog post
+│   ├── products/               # Product pages (auto-generated)
+│   ├── globals.css             # Global styles
+│   ├── layout.tsx              # Root layout
+│   └── page.tsx                # Homepage
+├── components/
+│   └── Header.tsx              # Navigation component
+└── public/
+    └── avatar.png              # Profile image
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎨 Customization
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Adding New Pages
+1. Create a new folder in `src/app/`
+2. Add a `page.tsx` file
+3. Update the navigation in `src/components/Header.tsx`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Adding Blog Posts
+1. Create a new folder in `src/app/blogs/`
+2. Add a `page.tsx` file with your content
+3. Update the blog listing in `src/app/blogs/page.tsx`
 
-## Learn More
+### Styling
+- Uses Tailwind CSS for styling
+- Custom styles in `src/app/globals.css`
+- Responsive design with mobile-first approach
 
-To learn more about Next.js, take a look at the following resources:
+## 🚀 Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### IBM Cloud Code Engine
+This site is deployed on IBM Cloud Code Engine for enterprise-grade reliability and scalability.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Deployment Commands
+```bash
+# Build and push to IBM Container Registry
+docker build -t us.icr.io/your-namespace/asapalejandro .
+docker push us.icr.io/your-namespace/asapalejandro
 
-## Deploy on Vercel
+# Deploy to IBM Cloud Code Engine
+ibmcloud ce app create --name asapalejandro \
+  --image us.icr.io/your-namespace/asapalejandro \
+  --port 3000 \
+  --env NODE_ENV=production
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Bind custom domain
+ibmcloud ce domain create --name asapalejandro.com
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔧 Development Notes
 
-Great! To use this image as your avatar on the homepage, follow these steps:
+### Key Technologies Used
+- **Next.js 14**: React framework with App Router
+- **TypeScript**: Type-safe development
+- **Tailwind CSS**: Utility-first styling
+- **Cursor AI**: AI-powered code editor
+- **IBM Watsonx**: Enterprise AI platform
+- **IBM Cloud Code Engine**: Containerized deployment
 
-### 1. Save the Image
-- Download or save the image you just uploaded to your computer.
+### Common Issues & Solutions
+- **Hydration errors**: Resolved with client-side checks
+- **Tailwind configuration**: Using stable v3 with proper PostCSS setup
+- **Font Awesome**: CDN integration for icons
+- **use client directive**: Required for components with React hooks
 
-### 2. Add to Your Project
-- Place the image file in your project at:  
-  ```
-  /public/avatar.png
-  ```
-  (Rename the file to `avatar.png` if it isn’t already.)
+## 📈 Future Enhancements
 
-### 3. That’s it!
-- Your homepage will now display this image in the About Me section as your portrait.
+### Planned Features
+- [ ] Contentlayer MDX blog integration
+- [ ] CI/CD pipeline with GitHub Actions
+- [ ] Analytics with IBM Instana
+- [ ] Search functionality with Watsonx
+- [ ] Advanced blog features
+- [ ] Contact forms and lead capture
+
+### Content Roadmap
+- [ ] IBM Client Engineering methodology deep-dive
+- [ ] AI & Automation pilot case studies
+- [ ] Cloud Pak implementation guides
+- [ ] Technical tutorials and best practices
+
+## 👨‍💻 About the Developer
+
+**Alejandro Palumbo**  
+IBM Platform Engineer National Market Focal  
+U.S. West Region
+
+### Connect
+- **LinkedIn**: [alejandro-palumbo](https://www.linkedin.com/in/alejandro-palumbo/)
+- **YouTube**: [@IBMAlejandro](https://youtube.com/@IBMAlejandro)
+- **TikTok**: [@asapalejandro](https://tiktok.com/@asapalejandro)
+- **Instagram**: [@asapalejandro](https://instagram.com/asapalejandro)
+- **Twitter**: [@925alejandro](https://x.com/925alejandro)
+
+## 📄 License
+
+This project is part of IBM Client Engineering initiatives and showcases enterprise-grade development practices.
 
 ---
 
-**Tip:**  
-If you want to crop or resize the image to a square for best appearance, you can do so before saving it as `avatar.png`. The Tailwind classes in your code will automatically make it round and fit the layout.
-
-Let me know if you want help with image cropping, further styling, or anything else!
+**Built with ❤️ using IBM technologies and AI-powered development tools**
