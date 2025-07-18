@@ -69,11 +69,9 @@ function slugify(name: string) {
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [isClient, setIsClient] = useState(false);
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  // Desktop nav: pure CSS hover for dropdowns
+  // Mobile nav: use state for toggling
 
   return (
     <header className="border-b bg-white sticky top-0 z-50">
@@ -86,7 +84,7 @@ export default function Header() {
               <Link href="/" className="font-medium text-gray-700 hover:text-blue-700 focus:outline-none">
                 Home
               </Link>
-              <button className="flex items-center gap-1 font-medium text-gray-700 hover:text-blue-700 focus:outline-none">
+              <button tabIndex={-1} className="flex items-center gap-1 font-medium text-gray-700 hover:text-blue-700 focus:outline-none cursor-default" aria-label="Open Home dropdown" disabled>
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
               </button>
             </div>
@@ -100,11 +98,10 @@ export default function Header() {
               </ul>
             </div>
           </div>
-          
           {/* Product Categories */}
           {NAV.map((cat) => (
             <div key={cat.label} className="relative group">
-              <button className="flex items-center gap-1 font-medium text-gray-700 hover:text-blue-700 focus:outline-none">
+              <button tabIndex={-1} className="flex items-center gap-1 font-medium text-gray-700 hover:text-blue-700 focus:outline-none cursor-default" aria-label={`Open ${cat.label} dropdown`} disabled>
                 {cat.label}
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
               </button>
@@ -140,7 +137,7 @@ export default function Header() {
         </div>
       </nav>
       {/* Mobile Nav */}
-      {isClient && mobileOpen && (
+      {mobileOpen && (
         <div className="md:hidden bg-white border-t shadow-lg px-4 py-4 space-y-2">
           {/* Home Mobile Menu */}
           <div>
@@ -151,6 +148,7 @@ export default function Header() {
               <button
                 className="flex items-center gap-1 font-medium text-gray-700 hover:text-blue-700 focus:outline-none"
                 onClick={() => setOpenDropdown(openDropdown === 'Home' ? null : 'Home')}
+                aria-label="Toggle Home dropdown"
               >
                 <svg className={`w-4 h-4 ml-1 transform transition-transform ${openDropdown === 'Home' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
               </button>
@@ -165,13 +163,13 @@ export default function Header() {
               </ul>
             )}
           </div>
-          
           {/* Product Categories Mobile Menu */}
           {NAV.map((cat) => (
             <div key={cat.label}>
               <button
                 className="w-full flex justify-between items-center py-2 font-medium text-gray-700 hover:text-blue-700 focus:outline-none"
                 onClick={() => setOpenDropdown(openDropdown === cat.label ? null : cat.label)}
+                aria-label={`Toggle ${cat.label} dropdown`}
               >
                 {cat.label}
                 <svg className={`w-4 h-4 ml-1 transform transition-transform ${openDropdown === cat.label ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
