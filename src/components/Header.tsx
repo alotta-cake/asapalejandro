@@ -7,63 +7,44 @@ const HOME_NAV = [
   { label: 'About', href: '/about' },
   { label: 'Events', href: '/events' },
   { label: 'Workshops', href: '/workshops' },
-  { label: 'Pilots', href: '/pilots' },
   { label: 'My Work', href: '/my-work' },
   { label: 'Blogs', href: '/blogs' },
 ];
 
 const NAV = [
   {
-    label: 'Application Development',
-    products: [
-      'UnifyBlue', 'CP4Apps', 'CP4Systems', 'WAS', 'DevOps', 'Spectrum', 'Web Hybrid Ed', 'App Run', 'Runtimes', 'Pure App', 'Mobile Foundation', 'ELM', 'Project Harmony', 'WCA Java',
-    ],
+    label: 'Data & AI',
+    href: '/data-ai',
+    products: [],
   },
   {
-    label: 'Application Integration',
-    products: [
-      'Hybrid iPaaS (IBM+WebM)', 'API Connect', 'APP Connect', 'Sterling (B2B Integration)', 'CP4I', 'MQ', 'DataPower', 'Aspera', 'Event Automation', 'FTM',
-    ],
-  },
-  {
-    label: 'Infrastructure Automation',
-    products: [
-      'Terraform', 'Vault', 'Ansible', 'Hashicorp', 'Consul', 'Nomad', 'Waypoint', 'WCA Ansible',
-    ],
-  },
-  {
-    label: 'Network Management',
-    products: [
-      'NS1', 'Hybrid Cloud Mesh', 'SevOne', 'Rapid Network Automation', 'Concert',
-    ],
-  },
-  {
-    label: 'Identity & Access Management',
-    products: [
-      'Verify', 'Trusteer', 'MaaS 360 (Digital Only)',
-    ],
-  },
-  {
-    label: 'IT Automation & FinOps',
-    products: [
-      'Instana', 'Turbonomic', 'Concert', 'Apptio', 'Cloudability', 'Targetprocess', 'CP4AIOps', 'Flexera', 'IT Automation', 'IBM FinOps', 'Operations Insights', 'Workload Automation', 'Workload Automation (+Ansible)',
-    ],
-  },
-  {
-    label: 'Asset Lifecycle Management',
-    products: [
-      'Maximo', 'Envizi', 'EI', 'TRIRIGA', 'Supply Chain', 'Sterling Order & Inventory Management',
-    ],
+    label: 'Automation',
+    href: '/automation',
+    products: [],
   },
 ];
 
+const AUTOMATION_PILLARS = [
+  'Application Development',
+  'Application Integration',
+  'Infrastructure Automation',
+  'Network Management',
+  'Identity & Access Management',
+  'IT Automation & FinOps',
+  'Asset Lifecycle Management',
+];
+
+const DATA_AI_PILLARS = [
+  'AI Assistants',
+  'AI/MLOps',
+  'Databases',
+  'Data Intelligence',
+  'Data Integration',
+  'Data Security',
+];
+
 function slugify(name: string) {
-  return name
-    .toLowerCase()
-    .replace(/[ +()]/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/[^a-z0-9-]/g, '')
-    .replace(/^-+|-+$/g, '');
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 }
 
 export default function Header() {
@@ -101,19 +82,43 @@ export default function Header() {
           {/* Product Categories */}
           {NAV.map((cat) => (
             <div key={cat.label} className="relative group">
-              <button tabIndex={-1} className="flex items-center gap-1 font-medium text-gray-700 hover:text-blue-700 focus:outline-none cursor-default" aria-label={`Open ${cat.label} dropdown`} disabled>
+              <Link href={cat.href} className="flex items-center gap-1 font-medium text-gray-700 hover:text-blue-700 focus:outline-none cursor-default" aria-label={`Open ${cat.label} dropdown`}>
                 {cat.label}
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
-              </button>
-              <div className="absolute left-0 top-full mt-2 min-w-[220px] bg-white border rounded shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition z-20">
-                <ul className="py-2">
-                  {cat.products.map((prod) => (
-                    <li key={prod}>
-                      <Link href={`/products/${slugify(prod)}`} className="block px-4 py-2 text-gray-700 hover:bg-blue-50 whitespace-nowrap">{prod}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              </Link>
+              {cat.label === 'Automation' && (
+                <div className="absolute left-0 top-full mt-2 min-w-[220px] bg-white border rounded shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition z-20">
+                  <ul className="py-2">
+                    {AUTOMATION_PILLARS.map((pillar) => (
+                      <li key={pillar}>
+                        <Link href={`/automation/${slugify(pillar)}`} className="block px-4 py-2 text-gray-700 hover:bg-blue-50 whitespace-nowrap">{pillar}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {cat.label === 'Data & AI' && (
+                <div className="absolute left-0 top-full mt-2 min-w-[220px] bg-white border rounded shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition z-20">
+                  <ul className="py-2">
+                    {DATA_AI_PILLARS.map((pillar) => (
+                      <li key={pillar}>
+                        <Link href={`/data-ai/${slugify(pillar)}`} className="block px-4 py-2 text-gray-700 hover:bg-blue-50 whitespace-nowrap">{pillar}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {cat.label !== 'Automation' && cat.label !== 'Data & AI' && (
+                <div className="absolute left-0 top-full mt-2 min-w-[220px] bg-white border rounded shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition z-20">
+                  <ul className="py-2">
+                    {cat.products.map((prod) => (
+                      <li key={prod}>
+                        <Link href={`/products/${slugify(prod)}`} className="block px-4 py-2 text-gray-700 hover:bg-blue-50 whitespace-nowrap">{prod}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -176,9 +181,9 @@ export default function Header() {
               </button>
               {openDropdown === cat.label && (
                 <ul className="pl-4 py-1">
-                  {cat.products.map((prod) => (
-                    <li key={prod}>
-                      <Link href={`/products/${slugify(prod)}`} className="block py-1 text-gray-700 hover:text-blue-700">{prod}</Link>
+                  {AUTOMATION_PILLARS.map((pillar) => (
+                    <li key={pillar}>
+                      <Link href={`/automation/${slugify(pillar)}`} className="block py-1 text-gray-700 hover:text-blue-700">{pillar}</Link>
                     </li>
                   ))}
                 </ul>

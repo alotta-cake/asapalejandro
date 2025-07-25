@@ -1,62 +1,74 @@
-import React from 'react';
+import styles from './theme.module.css';
+import Image from 'next/image';
+
+const QUOTES = [
+  "Why does anyone follow anyone? Maybe it's curiosity, inspiration, or just a good story.",
+  "Follow for the journey, stay for the lessons.",
+  "We follow to learn, to connect, and to be surprised.",
+  "Every day is a new story—thanks for being part of mine.",
+  "Sometimes you follow for the content, sometimes for the person.",
+  "The best follows are the ones that make you think differently.",
+];
+
+function getTodaysQuote() {
+  const day = Math.floor(Date.now() / (1000 * 60 * 60 * 24));
+  return QUOTES[day % QUOTES.length];
+}
 
 export default function Home() {
   return (
-    <>
-      {/* Hero Section */}
-      <section className="max-w-5xl mx-auto py-16 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold">Hi, I'm Alejandro Palumbo — IBM Platform Engineer National Market Focal</h1>
-        <p className="mt-4 text-lg text-gray-600">Co-creating AI & Automation pilots for clients across the US.</p>
-        <div className="flex justify-center gap-4 mt-8">
-          <a href="/pilots" className="bg-blue-600 text-white px-6 py-3 rounded-md">Request a Pilot</a>
-          <a href="/my-work" className="border px-6 py-3 rounded-md">See My Work</a>
-        </div>
-        <p className="max-w-2xl mx-auto mt-8 text-gray-600">
-          Why IBM Client Engineering? We use the Pilot Engineering Methodology to scope, build and deliver proofs of value in weeks—not months—so your business sees measurable outcomes faster.
-        </p>
-      </section>
-
-      {/* About Me Section */}
-      <section className="max-w-4xl mx-auto py-12 flex flex-col sm:flex-row items-center gap-8">
-        <img src="/avatar.png" alt="Alejandro Palumbo" className="w-56 h-56 rounded-full object-cover" />
-        <div>
-          <h2 className="text-2xl font-bold mb-4">Who I Am</h2>
-          <p className="mb-4 text-lg leading-relaxed text-gray-700">
-            I'm a National Market Platform Engineer Focal at IBM, covering the U.S. West. My IBM journey began in January 2021 as a Fyre/Techzone datacenter intern, where I first experienced the power of IBM's technology ecosystem. In April 2022, I transitioned into IBM Expert Labs as a Cloud Pak for Integration delivery consultant and solution architect, working directly with clients to solve complex integration challenges.
-          </p>
-          <p className="mb-4 text-lg leading-relaxed text-gray-700">
-            Since November 2024, I've been part of Client Engineering, where I help clients validate and scale solutions built on IBM Automation and the Watson x™ Data & AI portfolio. My role focuses on rapidly co-creating pilots that move from idea to production, demonstrating real business value through IBM's cutting-edge technologies.
-          </p>
-          <p className="mb-4 text-lg leading-relaxed text-gray-700">
-            I hold a B.A. in Economics from San Francisco State University and an M.S. in Computer Science from CSU Channel Islands. This unique combination of business acumen and technical expertise allows me to bridge the gap between technology solutions and business outcomes.
-          </p>
-          <div>
-            <div className="font-semibold mb-1">Fun facts:</div>
-            <ul className="list-disc list-inside text-gray-700 space-y-1">
-              <li>Born in Houston, Texas</li>
-              <li>I am Italian, Spanish, and Colombian</li>
-              <li>Outside of work I love to exercise, boxing, yoga, pilates, eating good food, traveling and seeing the world, and spending time with my loved ones</li>
-              <li>I love music and going to concerts</li>
-              <li>I am Christian and speak English and Spanish</li>
-              <li>Calvin and Hobbes is my favorite cartoon</li>
-              <li>I like comedy TV shows - ask me about my favorite</li>
-            </ul>
+    <main className={styles.surface}>
+      <section className={styles.heroSection}>
+        <div className={styles.heroColCentered}>
+          <div className={styles.heroImageCentered}>
+            <Image src="/avatar.png" alt="Alejandro Palumbo" width={220} height={280} className={styles.heroImage} priority />
           </div>
+          <h1 className={styles.heroNameCentered}>Alejandro Palumbo</h1>
+          <div className={styles.heroSubtitleCentered}>
+            National Market Platform Engineering Focal @ IBM&nbsp;&nbsp;|&nbsp;&nbsp;MS in Computer Science
+          </div>
+          <section className={styles.snapshotSectionCentered}>
+            <h2 className={styles.h2Centered}>Who</h2>
+            <ul className={styles.snapshotListCentered}>
+              <li>5+ years accelerating enterprise outcomes with IBM’s automation and integration stack</li>
+              <li>M.S. Computer Science, CSU Channel Islands | B.S. Economics, San Francisco State</li>
+              <li>Proven record guiding Fortune‑500 & public‑sector teams from legacy frameworks to cloud‑native architectures</li>
+              <li>Trusted advisor on AI‑driven modernization, cost‑optimization, and developer experience</li>
+            </ul>
+          </section>
+          <section className={styles.sharingSectionCentered}>
+            <h3 className={styles.h3Centered}>What I’m Sharing Here</h3>
+            <ul className={styles.sharingListCentered}>
+              <li>Project Spotlights — hands‑on walk‑throughs of current builds, successful pilots, and lessons learned</li>
+              <li>Local Tech Events — calendars, recaps, and takeaways from the latest modern‑tech meetups and conferences near me</li>
+              <li>IBM‑Focused Blogs — deep dives on IBM Cloud, software best practices, and tips for maximizing IBM’s free cloud credits</li>
+            </ul>
+          </section>
+          <section className={styles.whySectionCentered}>
+            <h3 className={styles.h3Centered}>Why Follow Along?</h3>
+            <blockquote className={styles.rotatingQuote}>{getTodaysQuote()}</blockquote>
+          </section>
+          <section className={styles.whereSectionCentered}>
+            <h3 className={styles.h3Centered}>Where</h3>
+            <div className={styles.ctaRowCentered}>
+              <a href="#book-meeting" className={styles.primaryBtnBlue}>Book an intro meeting</a>
+              <a href="#subscribe" className={styles.primaryBtnBlue}>Subscribe to my newsletter</a>
+            </div>
+            <div className={styles.socialsSectionCentered}>
+              <h4 className={styles.socialsHeader}>Socials</h4>
+              <p className={styles.socialsSubheader}>Find me below</p>
+              <div className={styles.socialIconsRow}>
+                <a href="https://youtube.com/@IBMAlejandro" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className={styles.socialIcon}><i className="fab fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/alejandro-palumbo/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialIcon}><i className="fab fa-linkedin"></i></a>
+                <a href="https://tiktok.com/@asapalejandro" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className={styles.socialIcon}><i className="fab fa-tiktok"></i></a>
+                <a href="https://instagram.com/asapalejandro" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className={styles.socialIcon}><i className="fab fa-instagram"></i></a>
+                <a href="https://x.com/925alejandro" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className={styles.socialIcon}><i className="fab fa-twitter"></i></a>
+              </div>
+            </div>
+          </section>
+          <div className={styles.disclaimerCentered}>Views are my own and do not represent IBM.</div>
         </div>
       </section>
-
-      {/* Social Links Section */}
-      <section className="max-w-sm mx-auto py-12">
-        <h2 className="text-2xl font-bold mb-6 text-center">Socials</h2>
-        <p className="text-center text-gray-600 mb-6">Find me below</p>
-        <div className="flex justify-center gap-6 text-3xl sm:text-4xl">
-          <a href="https://youtube.com/@IBMAlejandro" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-red-600 hover:scale-110 transition-transform"><i className="fab fa-youtube"></i></a>
-          <a href="https://www.linkedin.com/in/alejandro-palumbo/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-blue-700 hover:scale-110 transition-transform"><i className="fab fa-linkedin"></i></a>
-          <a href="https://tiktok.com/@asapalejandro" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="hover:text-black hover:scale-110 transition-transform"><i className="fab fa-tiktok"></i></a>
-          <a href="https://instagram.com/asapalejandro" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-pink-500 hover:scale-110 transition-transform"><i className="fab fa-instagram"></i></a>
-          <a href="https://x.com/925alejandro" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-blue-400 hover:scale-110 transition-transform"><i className="fab fa-twitter"></i></a>
-        </div>
-      </section>
-    </>
+    </main>
   );
 } 

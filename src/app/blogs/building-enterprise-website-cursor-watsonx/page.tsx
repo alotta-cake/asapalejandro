@@ -33,10 +33,10 @@ export default function BlogPost() {
       <article className="prose prose-lg max-w-none">
         <h2 className="text-3xl font-bold mt-12 mb-6">1. Why I'm Documenting This</h2>
         <p className="text-lg leading-relaxed text-gray-700 mb-6">
-          As an IBM Platform Engineer National Market Focal, I'm constantly exploring new technologies and methodologies that can enhance our client delivery capabilities. Recently, I decided to launch <strong>asapalejandro.com</strong> as my personal hub—not just as a portfolio site, but as a living demonstration of IBM's modern tooling and client-engineering mindset.
+          As an IBM Platform Engineer, I'm constantly exploring new technologies and methodologies that can enhance our client sales and delivery capabilities. Recently, I decided to launch <strong>asapalejandro.com</strong> as my personal hub—not just as a portfolio site, but as a living demonstration of IBM's modern tooling and client-zero mindset.
         </p>
         <p className="text-lg leading-relaxed text-gray-700 mb-6">
-          This project showcases the end-to-end execution that IBM Client Engineering is known for: from initial concept to production deployment in record time. It's a perfect example of how we turn ideas into runnable solutions quickly, using the latest AI-powered development tools and IBM's cloud infrastructure.
+          This project showcases the end-to-end execution that IBM Client Engineering is known for: from initial concept to production deployment in record time. It's a perfect example of how we turn ideas into runnable solutions quickly, using the latest AI & Automation powered development tools and IBM's cloud infrastructure.
         </p>
 
         <h2 className="text-3xl font-bold mt-12 mb-6">2. Buying a Domain</h2>
@@ -166,9 +166,6 @@ ibmcloud ce domain create --name asapalejandro.com`}
             Let's explore how IBM Client Engineering can accelerate your digital transformation with AI & Automation pilots.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/pilots" className="bg-blue-600 text-white px-8 py-3 rounded-md hover:bg-blue-700 transition-colors">
-              Request a Pilot
-            </a>
             <a href="/my-work" className="border border-blue-600 text-blue-600 px-8 py-3 rounded-md hover:bg-blue-50 transition-colors">
               See My Work
             </a>
