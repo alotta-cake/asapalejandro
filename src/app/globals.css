@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme tokens */
+:root {
+  --color-surface: #F8F9FA;
+  --color-text: #181A1B;
+  --color-accent: #0F62FE;
+  --color-accent-secondary: #FFB000;
+  --radius: 8px;
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --max-ch: 70ch;
+  --font-main: 'Inter', 'Space Grotesk', Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-main);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+/* Image quality optimization */
+img {
+  image-rendering: auto;
+  max-width: 100%;
+  height: auto;
+} 
