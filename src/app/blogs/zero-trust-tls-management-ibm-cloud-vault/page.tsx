@@ -11,7 +11,7 @@ export default function ZeroTrustTLSBlog() {
             ← Back to Blogs
           </Link>
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Zero-Trust TLS Management with IBM Cloud and Vault
+            Zero-Trust TLS Management with IBM Cloud Certificate Manager
           </h1>
           <div className="flex items-center text-gray-600 mb-6">
             <span>August 6, 2025</span>
@@ -28,11 +28,11 @@ export default function ZeroTrustTLSBlog() {
           <p className="text-gray-700 leading-relaxed mb-4">
             In our journey to deploy a production website on IBM Cloud Code Engine, we discovered the critical importance 
             of proper TLS certificate management. This blog post explores how to implement a zero-trust TLS strategy 
-            using IBM Cloud services and HashiCorp Vault for secure certificate management.
+            using IBM Cloud Certificate Manager for enterprise-grade certificate management.
           </p>
           <p className="text-gray-700 leading-relaxed">
-            We'll cover everything from initial setup to production deployment, including the challenges we faced 
-            and the solutions we implemented.
+            We'll cover everything from initial setup to production deployment, including how IBM Cloud Certificate Manager 
+            simplifies certificate lifecycle management with automatic renewal and zero-trust compliance.
           </p>
         </div>
 
@@ -42,21 +42,22 @@ export default function ZeroTrustTLSBlog() {
           
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-3">Vault Setup & PKI Configuration</h3>
+              <h3 className="text-lg font-semibold text-gray-800 mb-3">IBM Cloud Certificate Manager</h3>
               <ul className="text-gray-700 space-y-2">
-                <li>• Installed Vault v1.17.0 in WSL (Linux environment)</li>
-                <li>• Configured PKI secrets engine for certificate management</li>
-                <li>• Generated self-signed certificates for testing</li>
-                <li>• Identified production limitations</li>
+                <li>• Set up Certificate Manager instance</li>
+                <li>• Requested trusted public certificate</li>
+                <li>• Configured DNS validation</li>
+                <li>• Enabled automatic renewal</li>
               </ul>
             </div>
             
             <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-3">IBM Cloud Code Engine Integration</h3>
+              <h3 className="text-lg font-semibold text-gray-800 mb-3">Code Engine Integration</h3>
               <ul className="text-gray-700 space-y-2">
-                <li>• Created TLS secrets in Code Engine</li>
-                <li>• Attempted domain mapping with self-signed certificates</li>
-                <li>• Learned about trusted certificate requirements</li>
+                <li>• Integrated Certificate Manager with Code Engine</li>
+                <li>• Configured domain mapping with trusted certificates</li>
+                <li>• Achieved zero-trust TLS compliance</li>
+                <li>• Zero manual certificate management</li>
               </ul>
             </div>
           </div>
@@ -66,145 +67,111 @@ export default function ZeroTrustTLSBlog() {
         <div className="bg-white rounded-lg shadow-md p-6 mb-8">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">🚨 The Production Challenge</h2>
           
-          <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+          <p className="text-gray-700 leading-relaxed mb-4">
+            When deploying asapalejandro.com to IBM Cloud Code Engine, we needed trusted TLS certificates for production use. 
+            Manual certificate management with Let's Encrypt required DNS challenges, renewal scripts, and ongoing maintenance. 
+            We needed an enterprise-grade solution that would handle certificate lifecycle automatically.
+          </p>
+          
+          <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6">
             <div className="flex">
               <div className="flex-shrink-0">
-                <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                <svg className="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
                 </svg>
               </div>
               <div className="ml-3">
-                <h3 className="text-sm font-medium text-red-800">Self-Signed Certificate Rejection</h3>
-                <div className="mt-2 text-sm text-red-700">
-                  <p>IBM Cloud Code Engine rejected our Vault-generated self-signed certificates because they're not trusted by browsers and systems.</p>
+                <h3 className="text-sm font-medium text-blue-800">The Solution: IBM Cloud Certificate Manager</h3>
+                <div className="mt-2 text-sm text-blue-700">
+                  <p>IBM Cloud Certificate Manager provides fully managed certificate lifecycle management with automatic renewal, 
+                  zero-trust compliance, and seamless integration with Code Engine - eliminating manual certificate management entirely.</p>
                 </div>
               </div>
             </div>
           </div>
-
-          <p className="text-gray-700 leading-relaxed mb-4">
-            Our initial approach using Vault's PKI engine to generate self-signed certificates worked perfectly for testing, 
-            but IBM Cloud Code Engine requires trusted certificates for production use. This is actually a security feature 
-            that protects users from potential security risks.
-          </p>
         </div>
 
-        {/* Production Solutions */}
+        {/* Production Solution */}
         <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">🔧 Production TLS Solutions</h2>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">🔧 Production TLS Solution: IBM Cloud Certificate Manager</h2>
           
-          <div className="grid md:grid-cols-2 gap-6">
-                         <div className="border border-blue-200 rounded-lg p-4 bg-blue-50">
-               <h3 className="text-lg font-semibold text-blue-800 mb-3">Option 1: IBM Cloud Certificate Manager (Recommended)</h3>
-               <ul className="text-blue-700 space-y-2 mb-4">
-                 <li>✅ Fully managed by IBM</li>
-                 <li>✅ Zero-trust compliance</li>
-                 <li>✅ Automatic renewal</li>
-                 <li>✅ Free tier available</li>
-                 <li>✅ No complex setup</li>
-               </ul>
-               <div className="bg-white p-3 rounded text-sm">
-                 <code className="text-blue-800">
-                   IBM Cloud Console → Certificate Manager → Request Certificate
-                 </code>
-               </div>
-             </div>
-             
-             <div className="border border-gray-200 rounded-lg p-4">
-               <h3 className="text-lg font-semibold text-gray-800 mb-3">Option 2: Let's Encrypt (Alternative)</h3>
-               <ul className="text-gray-700 space-y-2 mb-4">
-                 <li>✅ 100% Free certificates</li>
-                 <li>✅ Trusted by all browsers</li>
-                 <li>✅ Automated renewal</li>
-                 <li>✅ Industry standard</li>
-               </ul>
-               <div className="bg-gray-50 p-3 rounded text-sm">
-                 <code className="text-gray-800">
-                   sudo certbot certonly --manual --preferred-challenges=dns -d asapalejandro.com
-                 </code>
-               </div>
-             </div>
+          <div className="border border-blue-200 rounded-lg p-6 bg-blue-50 mb-6">
+            <h3 className="text-lg font-semibold text-blue-800 mb-4">Why IBM Cloud Certificate Manager?</h3>
+            <ul className="text-blue-700 space-y-2 mb-4">
+              <li>✅ <strong>Fully Managed:</strong> IBM handles certificate generation, validation, and renewal</li>
+              <li>✅ <strong>Zero-Trust Compliance:</strong> Built-in security and compliance features</li>
+              <li>✅ <strong>Automatic Renewal:</strong> No manual intervention required</li>
+              <li>✅ <strong>Free Tier Available:</strong> Cost-effective for personal and small projects</li>
+              <li>✅ <strong>Seamless Integration:</strong> Direct integration with Code Engine</li>
+              <li>✅ <strong>Enterprise-Grade:</strong> Production-ready from day one</li>
+            </ul>
           </div>
         </div>
 
-                 {/* IBM Cloud Certificate Manager - The Simple Way */}
+         {/* IBM Cloud Certificate Manager Setup */}
          <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-           <h2 className="text-2xl font-semibold text-gray-900 mb-4">🚀 IBM Cloud Certificate Manager - The Simple Way</h2>
+           <h2 className="text-2xl font-semibold text-gray-900 mb-4">🚀 Setting Up IBM Cloud Certificate Manager</h2>
            
            <p className="text-gray-700 leading-relaxed mb-6">
-             For IBM Cloud users, the easiest approach is to use IBM Cloud Certificate Manager. This eliminates the complexity 
-             of external certificate authorities and provides a seamless IBM Cloud experience.
+             Setting up IBM Cloud Certificate Manager is straightforward and can be done entirely through the IBM Cloud Console 
+             or via CLI. Here's the complete process:
            </p>
 
-           <div className="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
-             <h3 className="text-lg font-semibold text-green-800 mb-2">IBM Cloud Certificate Manager Benefits</h3>
-             <div className="text-sm text-green-700 space-y-2">
-               <p><strong>✅ Zero Configuration:</strong> No need to install or configure external tools</p>
-               <p><strong>✅ Fully Managed:</strong> IBM handles certificate generation and renewal</p>
-               <p><strong>✅ Zero-Trust Compliant:</strong> Built-in security and compliance</p>
-               <p><strong>✅ Free Tier:</strong> Available at no cost for basic usage</p>
-               <p><strong>✅ IBM Cloud Native:</strong> Seamless integration with Code Engine</p>
-             </div>
-           </div>
-
            <div className="bg-blue-50 p-4 rounded-lg mb-6">
-             <h4 className="font-semibold text-blue-800 mb-2">Step-by-Step Setup:</h4>
-             <ol className="text-blue-700 space-y-2 text-sm">
-               <li>1. Go to IBM Cloud Console → Community Registry → "Cloud automation for Secrets Manager public certificates engine"</li>
-               <li>2. Create a new project (e.g., "asapalejandro-public-certs-project")</li>
-               <li>3. Configure required inputs (prefix, service plan)</li>
-               <li>4. Deploy and wait for validation (5-15 minutes)</li>
-               <li>5. Configure domain mapping with Code Engine</li>
+             <h4 className="font-semibold text-blue-800 mb-3">Step-by-Step Setup:</h4>
+             <ol className="text-blue-700 space-y-3 text-sm">
+               <li>
+                 <strong>1. Create Certificate Manager Instance:</strong>
+                 <div className="bg-white p-2 rounded mt-1 font-mono text-xs">
+                   ibmcloud resource service-instance-create asapalejandro-cert-manager certificate-manager standard us-south
+                 </div>
+               </li>
+               <li>
+                 <strong>2. Request Certificate via Web Console:</strong>
+                 <ul className="ml-4 mt-1 space-y-1">
+                   <li>• Go to: <a href="https://cloud.ibm.com/catalog/services/certificate-manager" className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">IBM Cloud Certificate Manager</a></li>
+                   <li>• Select your instance → Click "Order" → "Public Certificate"</li>
+                   <li>• Enter domain: asapalejandro.com</li>
+                   <li>• Choose DNS validation method</li>
+                   <li>• Add DNS TXT records to Namecheap when prompted</li>
+                 </ul>
+               </li>
+               <li>
+                 <strong>3. Configure Code Engine Domain Mapping:</strong>
+                 <div className="bg-white p-2 rounded mt-1 font-mono text-xs">
+                   ibmcloud ce domainmapping update --domain-name asapalejandro.com --cert-manager-instance asapalejandro-cert-manager
+                 </div>
+               </li>
              </ol>
            </div>
 
-           <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
-             <h3 className="text-lg font-semibold text-yellow-800 mb-2">⚠️ Real-World Experience</h3>
-             <div className="text-sm text-yellow-700 space-y-2">
-               <p><strong>Validation Time:</strong> The deployment process includes validation of multiple services (Key Protect, Object Storage) which can take 5-15 minutes.</p>
-               <p><strong>User Experience:</strong> Limited progress feedback during validation - you'll see "Working..." and "Validating..." status messages.</p>
-               <p><strong>Dependencies:</strong> The automation sets up multiple IBM Cloud services that need to be validated before completion.</p>
+           <div className="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+             <h3 className="text-lg font-semibold text-green-800 mb-2">✅ What Happens Next</h3>
+             <div className="text-sm text-green-700 space-y-2">
+               <p><strong>Automatic Renewal:</strong> Certificate Manager automatically renews certificates before expiration (typically 90-day cycle)</p>
+               <p><strong>Zero Downtime:</strong> Certificate updates happen seamlessly without service interruption</p>
+               <p><strong>No Manual Steps:</strong> Once configured, certificate management is fully automated</p>
              </div>
            </div>
          </div>
 
-         {/* Vault Integration */}
+         {/* Optional: Vault Integration for Backup */}
          <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-           <h2 className="text-2xl font-semibold text-gray-900 mb-4">🔄 Vault Integration for Secrets Management</h2>
+           <h2 className="text-2xl font-semibold text-gray-900 mb-4">🔄 Optional: Vault Integration for Backup & Audit</h2>
           
           <p className="text-gray-700 leading-relaxed mb-6">
-            While Vault's PKI engine isn't suitable for generating public-facing certificates, it excels at 
-            storing and managing certificates securely. Here's how to integrate Vault with Let's Encrypt:
+            While Certificate Manager handles certificate lifecycle automatically, you can optionally use Vault 
+            to store certificates for backup, audit trails, or use by other services. This is completely optional 
+            since Certificate Manager handles everything automatically.
           </p>
 
           <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6">
-            <h3 className="text-lg font-semibold text-blue-800 mb-2">Production Vault Setup</h3>
+            <h3 className="text-lg font-semibold text-blue-800 mb-2">Optional Vault Backup Setup</h3>
             <div className="text-sm text-blue-700 space-y-2">
-              <p><strong>1. Install Vault in Production Mode:</strong> Use file storage instead of in-memory</p>
-              <p><strong>2. Initialize with Multiple Unseal Keys:</strong> Use Shamir's Secret Sharing</p>
-              <p><strong>3. Configure for Certificate Storage:</strong> Store Let's Encrypt certificates securely</p>
+              <p><strong>Use Case:</strong> Backup certificates, audit trail, or integration with other services</p>
+              <p><strong>Note:</strong> Not required - Certificate Manager handles everything automatically</p>
+              <p><strong>If Needed:</strong> Export certificates from Certificate Manager and store in Vault for backup</p>
             </div>
-          </div>
-
-          <div className="bg-gray-50 p-4 rounded-lg">
-            <h4 className="font-semibold text-gray-800 mb-2">Automated Certificate Renewal Script:</h4>
-            <pre className="text-sm text-gray-700 overflow-x-auto">
-{`#!/bin/bash
-# renew-certificates.sh
-
-# Renew Let's Encrypt certificates
-certbot renew --quiet
-
-# Store in Vault
-vault kv put secret/asapalejandro-tls \\
-    cert=@/etc/letsencrypt/live/asapalejandro.com/fullchain.pem \\
-    key=@/etc/letsencrypt/live/asapalejandro.com/privkey.pem
-
-# Update IBM Cloud Code Engine secret
-ibmcloud ce secret update --name asapalejandro-tls \\
-    --from-file=tls.crt=/etc/letsencrypt/live/asapalejandro.com/fullchain.pem \\
-    --from-file=tls.key=/etc/letsencrypt/live/asapalejandro.com/privkey.pem`}
-            </pre>
           </div>
         </div>
 
@@ -216,32 +183,32 @@ ibmcloud ce secret update --name asapalejandro-tls \\
             <div className="flex items-start">
               <div className="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-4 mt-1">1</div>
               <div>
-                <h3 className="font-semibold text-gray-800">Generate Let's Encrypt Certificate</h3>
-                <p className="text-gray-700">Use DNS challenge method for IBM Cloud Code Engine</p>
+                <h3 className="font-semibold text-gray-800">Create Certificate Manager Instance</h3>
+                <p className="text-gray-700">Set up Certificate Manager service in IBM Cloud</p>
               </div>
             </div>
             
             <div className="flex items-start">
               <div className="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-4 mt-1">2</div>
               <div>
-                <h3 className="font-semibold text-gray-800">Store in Vault</h3>
-                <p className="text-gray-700">Securely store certificate and private key</p>
+                <h3 className="font-semibold text-gray-800">Request Certificate</h3>
+                <p className="text-gray-700">Request public certificate via web console with DNS validation</p>
               </div>
             </div>
             
             <div className="flex items-start">
               <div className="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-4 mt-1">3</div>
               <div>
-                <h3 className="font-semibold text-gray-800">Create IBM Cloud TLS Secret</h3>
-                <p className="text-gray-700">Upload certificate to Code Engine</p>
+                <h3 className="font-semibold text-gray-800">Configure Code Engine</h3>
+                <p className="text-gray-700">Update domain mapping to use Certificate Manager</p>
               </div>
             </div>
             
             <div className="flex items-start">
               <div className="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-4 mt-1">4</div>
               <div>
-                <h3 className="font-semibold text-gray-800">Configure Domain Mapping</h3>
-                <p className="text-gray-700">Connect custom domain with TLS certificate</p>
+                <h3 className="font-semibold text-gray-800">Automatic Renewal</h3>
+                <p className="text-gray-700">Certificate Manager automatically renews certificates - no manual steps needed</p>
               </div>
             </div>
           </div>
@@ -255,47 +222,47 @@ ibmcloud ce secret update --name asapalejandro-tls \\
             <div>
               <h3 className="text-lg font-semibold text-gray-800 mb-3">Security</h3>
               <ul className="text-gray-700 space-y-2">
-                <li>• Trusted certificates from Let's Encrypt</li>
-                <li>• Secure certificate storage in Vault</li>
+                <li>• Trusted certificates from Certificate Manager</li>
                 <li>• IBM Cloud's zero-trust infrastructure</li>
-                <li>• Automated renewal prevents expiration</li>
+                <li>• Automatic renewal prevents expiration</li>
+                <li>• Enterprise-grade security compliance</li>
               </ul>
             </div>
             
             <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-3">Cost & Efficiency</h3>
+              <h3 className="text-lg font-semibold text-gray-800 mb-3">Efficiency & Cost</h3>
               <ul className="text-gray-700 space-y-2">
-                <li>• Free certificates from Let's Encrypt</li>
-                <li>• IBM Cloud free tier available</li>
-                <li>• No manual certificate management</li>
-                <li>• Industry-standard tools</li>
+                <li>• Free tier available for Certificate Manager</li>
+                <li>• Zero manual certificate management</li>
+                <li>• Fully automated lifecycle</li>
+                <li>• Seamless IBM Cloud integration</li>
               </ul>
             </div>
           </div>
         </div>
 
-                 {/* What We Accomplished - Success Story */}
+         {/* What We Accomplished - Success Story */}
          <div className="bg-white rounded-lg shadow-md p-6 mb-8">
            <h2 className="text-2xl font-semibold text-gray-900 mb-4">🎉 Success Story - What We Accomplished</h2>
            
            <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
              <h3 className="text-lg font-semibold text-green-800 mb-3">✅ Complete TLS Setup Success</h3>
              <ol className="text-green-700 space-y-2">
-               <li>1. Generated trusted Let's Encrypt certificate using DNS challenge</li>
-               <li>2. Updated IBM Cloud Code Engine TLS secret with trusted certificates</li>
-               <li>3. Created domain mapping for asapalejandro.com</li>
-               <li>4. Stored certificates securely in Vault for ongoing management</li>
-               <li>5. Successfully deployed HTTPS website with trusted TLS</li>
+               <li>1. Created IBM Cloud Certificate Manager instance</li>
+               <li>2. Requested trusted public certificate with DNS validation</li>
+               <li>3. Configured Code Engine domain mapping with Certificate Manager</li>
+               <li>4. Enabled automatic certificate renewal</li>
+               <li>5. Successfully deployed HTTPS website with zero-trust TLS</li>
              </ol>
            </div>
 
            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-             <h3 className="text-lg font-semibold text-blue-800 mb-3">🚀 The Hybrid Approach That Worked</h3>
+             <h3 className="text-lg font-semibold text-blue-800 mb-3">🚀 The Enterprise Approach That Works</h3>
              <p className="text-blue-700 text-sm">
-               <strong>Let's Encrypt:</strong> Generated trusted, browser-recognized certificates<br/>
-               <strong>Vault:</strong> Securely stored certificates for ongoing management<br/>
-               <strong>IBM Cloud Code Engine:</strong> Hosted the application with TLS termination<br/>
-               <strong>Result:</strong> asapalejandro.com now accessible with trusted HTTPS
+               <strong>IBM Cloud Certificate Manager:</strong> Fully managed certificate lifecycle with automatic renewal<br/>
+               <strong>Code Engine Integration:</strong> Seamless TLS termination and domain management<br/>
+               <strong>Zero Manual Steps:</strong> Once configured, certificates renew automatically<br/>
+               <strong>Result:</strong> asapalejandro.com with enterprise-grade TLS management
              </p>
            </div>
          </div>
@@ -305,37 +272,37 @@ ibmcloud ce secret update --name asapalejandro-tls \\
            <h2 className="text-2xl font-semibold text-gray-900 mb-4">🎯 Next Steps</h2>
            
            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-             <h3 className="text-lg font-semibold text-green-800 mb-3">Implementation Roadmap</h3>
+             <h3 className="text-lg font-semibold text-green-800 mb-3">Ongoing Management</h3>
              <ol className="text-green-700 space-y-2">
-               <li>1. Set up automated certificate renewal with Vault</li>
-               <li>2. Create monitoring and alerting for certificate expiration</li>
-               <li>3. Implement automated deployment pipeline for renewed certificates</li>
-               <li>4. Monitor and maintain the zero-trust setup</li>
+               <li>1. Certificate Manager automatically renews certificates (no action needed)</li>
+               <li>2. Monitor certificate status in IBM Cloud Console</li>
+               <li>3. Optional: Set up Vault backup for audit trail (if needed)</li>
+               <li>4. Enjoy zero-trust TLS with zero manual maintenance</li>
              </ol>
            </div>
          </div>
 
-                 {/* Conclusion */}
+         {/* Conclusion */}
          <div className="bg-white rounded-lg shadow-md p-6 mb-8">
            <h2 className="text-2xl font-semibold text-gray-900 mb-4">🎉 Conclusion</h2>
            
            <p className="text-gray-700 leading-relaxed mb-4">
-             We successfully implemented a zero-trust TLS management approach that combines the best of open source and 
-             enterprise tools: trusted certificates from Let's Encrypt, secure storage with Vault, and reliable hosting 
-             on IBM Cloud Code Engine.
+             We successfully implemented a zero-trust TLS management approach using IBM Cloud Certificate Manager, 
+             providing enterprise-grade certificate lifecycle management with automatic renewal and seamless integration 
+             with IBM Cloud Code Engine.
            </p>
            
            <p className="text-gray-700 leading-relaxed mb-4">
-             The key insight is that each tool serves its purpose: Let's Encrypt provides trusted, browser-recognized 
-             certificates; Vault excels at secure certificate storage and management; and IBM Cloud Code Engine delivers 
-             reliable hosting with built-in TLS termination.
+             The key advantage of Certificate Manager is its simplicity: fully managed by IBM, automatic renewal, 
+             zero-trust compliance, and seamless integration with Code Engine - eliminating all manual certificate 
+             management overhead.
            </p>
            
            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
              <p className="text-green-800 font-semibold">
-               ✅ Mission Accomplished: asapalejandro.com is now live with trusted HTTPS! 
-               This hybrid approach demonstrates how to combine open source and enterprise tools 
-               for a robust, secure, and cost-effective TLS solution.
+               ✅ Mission Accomplished: asapalejandro.com uses enterprise-grade TLS management! 
+               Certificate Manager provides a robust, secure, and maintenance-free TLS solution that scales 
+               from personal projects to enterprise deployments.
              </p>
            </div>
          </div>

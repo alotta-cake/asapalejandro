@@ -1,0 +1,45 @@
+# IBM Cloud Continuous Delivery Pipeline for Certificate Renewal
+# This pipeline automatically renews Let's Encrypt certificates and updates Vault + IBM Cloud
+
+stages:
+  - name: "Certificate Renewal"
+    inputs:
+      - type: git
+        branch: main
+        url: https://github.com/your-username/AutomationAlejandro.git
+    jobs:
+      - name: "Renew Certificate"
+        image: ubuntu:22.04
+        script:
+          - |
+            echo "🔐 Starting automated certificate renewal..."
+            
+            # Install dependencies
+            apt-get update -qq
+            apt-get install -y -qq certbot vault curl jq
+            
+            # Set environment variables
+            export DOMAIN="asapalejandro.com"
+            export VAULT_ADDR="${VAULT_ADDR:-http://vault:8200}"
+            export VAULT_TOKEN="${VAULT_TOKEN}"
+            export PROJECT_DIR="/workspace"
+            
+            # Renew certificate
+            certbot renew --cert-name $DOMAIN --quiet --no-random-sleep-on-renew || true
+            
+            # Copy certificates
+            cp /etc/letsencrypt/live/$DOMAIN/fullchain.pem $PROJECT_DIR/$DOMAIN.crt
+            cp /etc/letsencrypt/live/$DOMAIN/privkey.pem $PROJECT_DIR/$DOMAIN.key
+            
+            # Store in Vault
+            vault kv put secret/asapalejandro-tls \
+              cert=@$PROJECT_DIR/$DOMAIN.crt \
+              key=@$PROJECT_DIR/$DOMAIN.key
+            
+            # Update IBM Cloud Code Engine
+            ibmcloud ce secret update --name asapalejandro-tls \
+              --from-file=tls.crt=$PROJECT_DIR/$DOMAIN.crt \
+              --from-file=tls.key=$PROJECT_DIR/$DOMAIN.key
+            
+            echo "✅ Certificate renewal complete!"
+

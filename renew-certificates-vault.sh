@@ -37,12 +37,34 @@ check_vault() {
 renew_certificates() {
     echo "🔄 Renewing Let's Encrypt certificates..."
     
-    # Check if renewal is needed (Let's Encrypt only renews if within 30 days of expiration)
-    if certbot renew --dry-run; then
-        echo "✅ Certificates are up to date or renewed successfully"
+    # First check if renewal is needed (dry-run to check)
+    if certbot renew --dry-run --cert-name $DOMAIN > /dev/null 2>&1; then
+        echo "✅ Certificate renewal check passed"
+    else
+        echo "⚠️  Certificate needs renewal or doesn't exist"
+    fi
+    
+    # Actually renew the certificate (certbot only renews if within 30 days of expiration)
+    echo "🔄 Attempting certificate renewal..."
+    if certbot renew --cert-name $DOMAIN --quiet --no-random-sleep-on-renew; then
+        echo "✅ Certificate renewed successfully"
+    else
+        # If renewal didn't happen (not within 30 days), try to get a new certificate
+        echo "⚠️  Automatic renewal not triggered (certificate may be too new or expired)"
+        echo "🔄 Attempting to obtain new certificate..."
         
-        # Copy renewed certificates to project directory
-        echo "📁 Copying renewed certificates to project directory..."
+        # Check if certificate exists
+        if [ -f "/etc/letsencrypt/live/$DOMAIN/fullchain.pem" ]; then
+            echo "✅ Certificate exists, using existing certificate"
+        else
+            echo "❌ Certificate not found. Please run certbot certonly manually first."
+            return 1
+        fi
+    fi
+    
+    # Copy certificates to project directory
+    echo "📁 Copying certificates to project directory..."
+    if [ -f "/etc/letsencrypt/live/$DOMAIN/fullchain.pem" ]; then
         sudo cp /etc/letsencrypt/live/$DOMAIN/fullchain.pem $PROJECT_DIR/$DOMAIN.crt
         sudo cp /etc/letsencrypt/live/$DOMAIN/privkey.pem $PROJECT_DIR/$DOMAIN.key
         
@@ -51,9 +73,10 @@ renew_certificates() {
         chmod 644 $PROJECT_DIR/$DOMAIN.crt
         chmod 600 $PROJECT_DIR/$DOMAIN.key
         
+        echo "✅ Certificates copied successfully"
         return 0
     else
-        echo "❌ Certificate renewal failed"
+        echo "❌ Certificate files not found"
         return 1
     fi
 }

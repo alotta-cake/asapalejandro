@@ -46,10 +46,6 @@ export default function Home() {
           </section>
           <section className={styles.whereSectionCentered}>
             <h3 className={styles.h3Centered}>Where</h3>
-            <div className={styles.ctaRowCentered}>
-              <Link href="/book-meeting" className={styles.primaryBtnBlue}>Book an intro meeting</Link>
-              <Link href="/login" className={styles.primaryBtnBlue}>Sign In / Sign Up</Link>
-            </div>
             <div className={styles.socialsSectionCentered}>
               <h4 className={styles.socialsHeader}>Socials</h4>
               <p className={styles.socialsSubheader}>Find me below</p>
